@@ -10,6 +10,7 @@
 
 
 #include "sim.h"
+#include <stdint.h>
 
 
 void help() {
