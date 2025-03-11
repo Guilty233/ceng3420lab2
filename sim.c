@@ -412,7 +412,7 @@ void handle_sra(unsigned int cur_inst) {
     unsigned int rd = MASK11_7(cur_inst),
 		rs1 = MASK19_15(cur_inst),
         rs2 = MASK24_20(cur_inst);
-    NEXT_LATCHES.REGS[rd] = (int)CURRENT_LATCHES.REGS[rs1] - CURRENT_LATCHES.REGS[rs2];
+    NEXT_LATCHES.REGS[rd] = (int)CURRENT_LATCHES.REGS[rs1] >> CURRENT_LATCHES.REGS[rs2];
     //exit(EXIT_FAILURE);
 }
 
