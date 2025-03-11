@@ -542,7 +542,7 @@ void handle_lh(unsigned int cur_inst) {
     unsigned int rd = MASK11_7(cur_inst), rs1 = MASK19_15(cur_inst);
     int imm12 = MASK31_20(cur_inst);
     uint32_t addr = imm12 + CURRENT_LATCHES.REGS[rs1];
-    uint32_t value = (MEMORY[addr + 1] << 8)  | MEMORY[addr];
+    int16_t value = (MEMORY[addr + 1] << 8)  | MEMORY[addr];
     NEXT_LATCHES.REGS[rd] = value;
     //exit(EXIT_FAILURE);
 }
@@ -554,7 +554,7 @@ void handle_lw(unsigned int cur_inst) {
     unsigned int rd = MASK11_7(cur_inst), rs1 = MASK19_15(cur_inst);
     int imm12 = MASK31_20(cur_inst);
     uint32_t addr = imm12 + CURRENT_LATCHES.REGS[rs1];
-    uint32_t value = (MEMORY[addr + 3] << 24) | (MEMORY[addr + 2] << 16) | (MEMORY[addr + 1] << 8)  | MEMORY[addr];
+    int32_t value = (MEMORY[addr + 3] << 24) | (MEMORY[addr + 2] << 16) | (MEMORY[addr + 1] << 8)  | MEMORY[addr];
     NEXT_LATCHES.REGS[rd] = value;
     //printf("memory content: 0x%08x\n", value);
     //exit(EXIT_FAILURE);
